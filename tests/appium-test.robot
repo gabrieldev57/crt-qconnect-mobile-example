@@ -17,7 +17,7 @@ ${GETSTARTED-EMAIL-FIELD}       xpath=//android.view.View[@resource-id='username
 ${GETSTARTED-NEXT-BUTTON}       xpath=//android.view.View//android.widget.Button
 ${YOUREMPLOYER-INPUT-FIELD}     xpath=//android.widget.EditText[@resource-id='company_name']
 ${SELECT-ACCOUNT-HEADER}        xpath=(//android.view.View[@resource-id='login_multiple_employers_page']//android.widget.TextView)[1]
-${SELECT-ACCOUNT-ATMOSPHERE-BUTTON}                         xpath=(//android.view.View[@resource-id='choose_employer_form']//android.widget.TextView)[2]
+${SELECT-ACCOUNT-ATMOSPHERE-BUTTON}                         xpath=(//android.view.View[@resource-id='choose_employer_form']//android.widget.TextView)[1]
 ${PASSWORD-FIELD}               xpath=//android.widget.EditText[@resource-id='password']
 ${LOG-IN-BUTTON}                xpath=//android.widget.Button[@resource-id='but_login']
 ${QUANTITY-SCROLL}              xpath=(//android.view.View[@resource-id='transfer_control_box']//android.view.View/android.widget.TextView)[14]
@@ -61,7 +61,7 @@ First Test cases
 
     #### STEP 2 ####
     #Type the e-mail and click Next
-    Wait Until Page Contains Element                        ${GETSTARTED-EMAIL-FIELD}             timeout=30
+    Wait Until Page Contains Element                        ${GETSTARTED-EMAIL-FIELD}                   timeout=30
     Sleep                       10
     Click Element               ${GETSTARTED-BUTTON}
     Click Element               ${GETSTARTED-BUTTON}
@@ -78,14 +78,18 @@ First Test cases
 
     #### STEP 5 ####
     Wait Until Page Contains Element                        ${SELECT-ACCOUNT-ATMOSPHERE-BUTTON}
-    Sleep                        10
+    Sleep                       10
     Click Element               ${SELECT-ACCOUNT-ATMOSPHERE-BUTTON}
 
     #### STEP 6 ####
     Wait Until Page Contains Element                        ${PASSWORD-FIELD}
-    Sleep                        10
+    Sleep                       10
     Input Password              ${PASSWORD-FIELD}           Welcome@123
     Click Element               ${LOG-IN-BUTTON}
 
     ### STEP 7 ###
     Wait Until Page Contains Element                        ${QUANTITY-SCROLL}
+    # Swipe                       start_x=87                  start_y=259                 offset_x=201    offset_y=1507
+    @{swipe_coordinates}                        Create List                        Get x and y                        ${QUANTITY-SCROLL}
+    ${offset_x}=                        Evaluate                        (${swipe_coordinates}[1]+5)                       
+    Swipe                        start_x=${swipe_coordinates}[1]                       start_y=${swipe_coordinates}[2]    offset_x=${offset_x}    offset_y=${swipe_coordinates}[2]
