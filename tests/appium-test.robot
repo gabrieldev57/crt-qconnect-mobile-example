@@ -64,7 +64,6 @@ First Test cases
     Click Element By xpath      ${HOME-GETSTARTED-BUTTON}
 
     #### STEP 2 ####
-    #Type the e-mail and click Next
     Wait Until Page Contains Element                        ${GETSTARTED-EMAIL-FIELD}                           timeout=30
     Sleep                       3
     Click Element               ${GETSTARTED-BUTTON}
@@ -100,10 +99,10 @@ First Test cases
     Wait Until Page Contains Element                        ${INSTANT-TRANSFER-BUTTON}
     Click Element               ${INSTANT-TRANSFER-BUTTON}
     Wait Until Page Contains Element                        ${TRANSFER-WAGES-BUTTON}
-    Click Element                        ${TRANSFER-WAGES-BUTTON}
+    Click Element               ${TRANSFER-WAGES-BUTTON}
 
     ### STEP 8 ###
-    Wait Until Page Contains Element     ${BACK-TO-DAHSBOARD-BUTTON}
-    Sleep                        3
-    Element Text Should Be               ${TRANSFER-SENT-MESSAGE}                       Transfer Sent
-    Click Element                ${BACK-TO-DAHSBOARD-BUTTON}
+    Wait Until Page Contains Element                        ${BACK-TO-DAHSBOARD-BUTTON}
+    Sleep                       3
+    Element Text Should Be      ${TRANSFER-SENT-MESSAGE}    Transfer Sent
+    Click Element               ${BACK-TO-DAHSBOARD-BUTTON}
