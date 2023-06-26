@@ -20,6 +20,7 @@ ${SELECT-ACCOUNT-HEADER}        xpath=(//android.view.View[@resource-id='login_m
 ${SELECT-ACCOUNT-ATMOSPHERE-BUTTON}                         xpath=(//android.view.View[@resource-id='choose_employer_form']//android.widget.TextView)[2]
 ${PASSWORD-FIELD}               xpath=//android.widget.EditText[@resource-id='password']
 ${LOG-IN-BUTTON}                xpath=//android.widget.Button[@resource-id='but_login']
+${QUANTITY-SCROLL}              xpath=(//android.view.View[@resource-id='transfer_control_box']//android.view.View/android.widget.TextView)[14]
 
 *** Keywords ***
 Open myflexpay
@@ -55,9 +56,7 @@ Click Element By xpath
 *** Test Cases ***
 First Test cases
     #### STEP 1 ####
-    #Open the app
     Open myflexpay
-    #Click Get Started button
     Click Element By xpath      ${HOME-GETSTARTED-BUTTON}
 
     #### STEP 2 ####
@@ -87,3 +86,6 @@ First Test cases
     Sleep                        10
     Input Password              ${PASSWORD-FIELD}           Welcome@123
     Click Element               ${LOG-IN-BUTTON}
+
+    ### STEP 7 ###
+    Wait Until Page Contains Element                        ${QUANTITY-SCROLL}
