@@ -37,8 +37,8 @@ Get x and y
     [Arguments]                 ${element}
     ${bounds}=                  Get Element Attribute       ${element}                  bounds
     @{position}=                Get Regexp Matches          ${bounds}                   (\\d+)
-    ${x}=                       Evaluate                    (${position}[0]+${position}[1])/2
-    ${y}=                       Evaluate                    (${position}[2]+${position}[3])/2
+    ${x}=                       Evaluate                    (${position}[0]+${position}[2])/2
+    ${y}=                       Evaluate                    (${position}[1]+${position}[3])/2
     [Return]                    ${x}                        ${y}
 
 Click Element By xpath
@@ -61,8 +61,8 @@ First Test cases
 
     #### STEP 2 ####
     #Type the e-mail and click Next
-    Wait Until Page Contains Element                        ${GETSTARTED-EMAIL-FIELD}                   timeout=30
-    Sleep                       10
+    Wait Until Page Contains Element                        ${GETSTARTED-EMAIL-FIELD}                           timeout=30
+    Sleep                       5
     Click Element               ${GETSTARTED-BUTTON}
     Click Element               ${GETSTARTED-BUTTON}
     Click Element               ${GETSTARTED-PICKLIST}
@@ -78,18 +78,18 @@ First Test cases
 
     #### STEP 5 ####
     Wait Until Page Contains Element                        ${SELECT-ACCOUNT-ATMOSPHERE-BUTTON}
-    Sleep                       10
+    Sleep                       5
     Click Element               ${SELECT-ACCOUNT-ATMOSPHERE-BUTTON}
 
     #### STEP 6 ####
     Wait Until Page Contains Element                        ${PASSWORD-FIELD}
-    Sleep                       10
+    Sleep                       5
     Input Password              ${PASSWORD-FIELD}           Welcome@123
     Click Element               ${LOG-IN-BUTTON}
 
     ### STEP 7 ###
     Wait Until Page Contains Element                        ${QUANTITY-SCROLL}
-    # Swipe                       start_x=87                  start_y=259                 offset_x=201    offset_y=1507
-    @{swipe_coordinates}                        Create List                        Get x and y                        ${QUANTITY-SCROLL}
-    ${offset_x}=                        Evaluate                        (${swipe_coordinates}[1]+5)                       
-    Swipe                        start_x=${swipe_coordinates}[1]                       start_y=${swipe_coordinates}[2]    offset_x=${offset_x}    offset_y=${swipe_coordinates}[2]
+    @{swipe_coordinates}        Get x and y                 ${QUANTITY-SCROLL}
+    Log                         ${swipe_coordinates}[1]
+    ${offset_x}=                Evaluate                    (${swipe_coordinates}[0]+10)
+    Swipe                       start_x=${swipe_coordinates}[0]                         start_y=${swipe_coordinates}[1]                     offset_x=${offset_x}    offset_y=${swipe_coordinates}[1]
