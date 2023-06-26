@@ -21,6 +21,10 @@ ${SELECT-ACCOUNT-ATMOSPHERE-BUTTON}                         xpath=(//android.vie
 ${PASSWORD-FIELD}               xpath=//android.widget.EditText[@resource-id='password']
 ${LOG-IN-BUTTON}                xpath=//android.widget.Button[@resource-id='but_login']
 ${QUANTITY-SCROLL}              xpath=(//android.view.View[@resource-id='transfer_control_box']//android.view.View/android.widget.TextView)[14]
+${INSTANT-TRANSFER-BUTTON}      xpath=//android.view.View[@resource-id='but_make_transfer_instant']
+${TRANSFER-WAGES-BUTTON}        xpath=//android.widget.TextView[@text='TRANSFER WAGES']
+${TRANSFER-SENT-MESSAGE}        xpath=//android.widget.TextView[@text='Transfer Sent']
+${BACK-TO-DAHSBOARD-BUTTON}     xpath=//android.widget.TextView[@text='BACK TO DASHBOARD']
 
 *** Keywords ***
 Open myflexpay
@@ -62,7 +66,7 @@ First Test cases
     #### STEP 2 ####
     #Type the e-mail and click Next
     Wait Until Page Contains Element                        ${GETSTARTED-EMAIL-FIELD}                           timeout=30
-    Sleep                       5
+    Sleep                       3
     Click Element               ${GETSTARTED-BUTTON}
     Click Element               ${GETSTARTED-BUTTON}
     Click Element               ${GETSTARTED-PICKLIST}
@@ -78,12 +82,12 @@ First Test cases
 
     #### STEP 5 ####
     Wait Until Page Contains Element                        ${SELECT-ACCOUNT-ATMOSPHERE-BUTTON}
-    Sleep                       5
+    Sleep                       3
     Click Element               ${SELECT-ACCOUNT-ATMOSPHERE-BUTTON}
 
     #### STEP 6 ####
     Wait Until Page Contains Element                        ${PASSWORD-FIELD}
-    Sleep                       5
+    Sleep                       3
     Input Password              ${PASSWORD-FIELD}           Welcome@123
     Click Element               ${LOG-IN-BUTTON}
 
@@ -93,3 +97,13 @@ First Test cases
     Log                         ${swipe_coordinates}[1]
     ${offset_x}=                Evaluate                    (${swipe_coordinates}[0]+10)
     Swipe                       start_x=${swipe_coordinates}[0]                         start_y=${swipe_coordinates}[1]                     offset_x=${offset_x}    offset_y=${swipe_coordinates}[1]
+    Wait Until Page Contains Element                        ${INSTANT-TRANSFER-BUTTON}
+    Click Element               ${INSTANT-TRANSFER-BUTTON}
+    Wait Until Page Contains Element                        ${TRANSFER-WAGES-BUTTON}
+    Click Element                        ${TRANSFER-WAGES-BUTTON}
+
+    ### STEP 8 ###
+    Wait Until Page Contains Element     ${BACK-TO-DAHSBOARD-BUTTON}
+    Sleep                        3
+    Element Text Should Be               ${TRANSFER-SENT-MESSAGE}                       Transfer Sent
+    Click Element                ${BACK-TO-DAHSBOARD-BUTTON}
