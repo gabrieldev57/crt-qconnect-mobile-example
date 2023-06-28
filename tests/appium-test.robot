@@ -69,7 +69,7 @@ Increase the amount
         ${last_x}=              Set Variable                ${x}
         ${x}=                   Evaluate                    (${x}+5)
         Swipe                   start_x=${last_x}           start_y=${swipe_coordinates}[1]              offset_x=${x}               offset_y=${swipe_coordinates}[1]
-        Sleep                   3
+        Sleep                   2
     END
 
 *** Test Cases ***
