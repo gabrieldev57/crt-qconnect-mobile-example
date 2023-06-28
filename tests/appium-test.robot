@@ -73,7 +73,7 @@ Increase the amount
     END
 
 *** Test Cases ***
-First Test cases
+Transfer process through MyFlexPay app
     #### STEP 1 ####
     Open myflexpay
     Click Element By xpath      ${HOME-GETSTARTED-BUTTON}
