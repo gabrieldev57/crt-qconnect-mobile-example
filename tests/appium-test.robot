@@ -17,7 +17,7 @@ ${GETSTARTED-EMAIL-FIELD}       xpath=//android.view.View[@resource-id='username
 ${GETSTARTED-NEXT-BUTTON}       xpath=//android.view.View//android.widget.Button
 ${YOUREMPLOYER-INPUT-FIELD}     xpath=//android.widget.EditText[@resource-id='company_name']
 ${SELECT-ACCOUNT-HEADER}        xpath=(//android.view.View[@resource-id='login_multiple_employers_page']//android.widget.TextView)[1]
-${SELECT-ACCOUNT-ATMOSPHERE-BUTTON}                         xpath=(//android.view.View[@resource-id='choose_employer_form']//android.widget.TextView)[1]
+${SELECT-ACCOUNT-ATMOSPHERE-BUTTON}                         xpath=//android.view.View[@resource-id='choose_employer_form']//android.widget.TextView[@text='OSV Atmosphere']
 ${PASSWORD-FIELD}               xpath=//android.widget.EditText[@resource-id='password']
 ${LOG-IN-BUTTON}                xpath=//android.widget.Button[@resource-id='but_login']
 ${QUANTITY-SCROLL}              xpath=(//android.view.View[@resource-id='transfer_control_box']//android.view.View/android.widget.TextView)[14]
