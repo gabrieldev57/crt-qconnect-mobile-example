@@ -61,7 +61,7 @@ Click Element By xpath
 Increase the amount
     [Arguments]                 @{swipe_coordinates}
     ${x}=                       Set Variable                ${swipe_coordinates}[0]
-    FOR                         ${index}                    IN RANGE                    30
+    FOR                         ${index}                    IN RANGE                    100
         ${quantity}=            Get Text                    ${AMOUNT-TEXT}
         IF                      "${quantity}" == "10.00"
             BREAK
@@ -69,7 +69,7 @@ Increase the amount
         ${last_x}=              Set Variable                ${x}
         ${x}=                   Evaluate                    (${x}+5)
         Swipe                   start_x=${last_x}           start_y=${swipe_coordinates}[1]              offset_x=${x}               offset_y=${swipe_coordinates}[1]
-        Sleep                   5
+        Sleep                   3
     END
 
 *** Test Cases ***
